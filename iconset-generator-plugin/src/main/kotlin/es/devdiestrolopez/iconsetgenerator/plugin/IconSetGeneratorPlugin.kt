@@ -7,7 +7,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 private const val DRAWABLE_DIRECTORY_PATH = "src/main/res/drawable"
 private const val DEFAULT_ICON_SET_FILE_NAME = "IconSet"
-private const val DEFAULT_ICON_SET_PACKAGE_NAME = ".ui.iconSet"
+private const val DEFAULT_ICON_SET_PACKAGE_NAME = ".ui"
 
 class IconSetGeneratorPlugin : Plugin<Project> {
 
