@@ -9,7 +9,7 @@ private const val DRAWABLE_DIRECTORY_PATH = "src/main/res/drawable"
 private const val DEFAULT_ICON_SET_FILE_NAME = "IconSet"
 private const val DEFAULT_ICON_SET_PACKAGE_NAME = ".ui"
 
-class IconSetGeneratorPlugin : Plugin<Project> {
+internal class IconSetGeneratorPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         val iconSetExtension = target.extensions.create("iconSet", IconSetExtension::class.java)

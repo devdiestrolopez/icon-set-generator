@@ -17,7 +17,7 @@ private const val PLUGIN_PACKAGE_NAME = "es.devdiestrolopez.iconset.generator.pl
 private const val ICON_PREFIX = "ic_"
 private const val XML_EXTENSION = "xml"
 
-abstract class GenerateIconSetTask : DefaultTask() {
+internal abstract class GenerateIconSetTask : DefaultTask() {
 
     @get:Input
     abstract val appPackageName: Property<String>
