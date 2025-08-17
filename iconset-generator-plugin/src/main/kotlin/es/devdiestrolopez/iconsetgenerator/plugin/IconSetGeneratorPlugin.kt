@@ -3,9 +3,7 @@ package es.devdiestrolopez.iconsetgenerator.plugin
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.io.File
 
 private const val DRAWABLE_DIRECTORY_PATH = "src/main/res/drawable"
 private const val DEFAULT_ICON_SET_FILE_NAME = "IconSet"
@@ -26,26 +24,23 @@ class IconSetGeneratorPlugin : Plugin<Project> {
                 fileName.convention(DEFAULT_ICON_SET_FILE_NAME)
             }
 
-            val kotlinSourceSets = project.extensions.getByType(KotlinSourceSetContainer::class.java)
-            val sourceDirs = kotlinSourceSets.sourceSets.getByName("main").kotlin.srcDirs + mainSourceSet.java.srcDirs
-            val sourceDir =
-                sourceDirs.firstOrNull(File::exists) ?: throw IllegalStateException("Could not find a main source directory for Java or Kotlin.")
+            val generatedSourceDir = project.layout.buildDirectory.dir("generated/source/iconset")
 
             iconSetGeneratorTask.configure { task ->
                 task.apply {
                     appPackageName.set(androidExtension.namespace!!)
                     drawableDirectory.set(project.layout.projectDirectory.dir(DRAWABLE_DIRECTORY_PATH))
-                    outputDirectory.set(project.file(sourceDir))
+                    outputDirectory.set(generatedSourceDir)
                     outputPackage.set(iconSetExtension.outputPackage.get())
                     fileName.set(iconSetExtension.fileName.get())
                 }
             }
 
+            mainSourceSet.java.srcDir(generatedSourceDir)
+
             project.tasks.withType(KotlinCompile::class.java).configureEach {
                 it.dependsOn(iconSetGeneratorTask)
             }
-
-            mainSourceSet.java.srcDir(iconSetGeneratorTask.get().outputDirectory.asFile)
         }
     }
 }
