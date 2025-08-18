@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="IconSetGenerator.main" target="21" />
+      <module name="IconSetGenerator.test" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="IconSetGenerator.iconset-generator-plugin" options="-Xlint:none" />
       <module name="IconSetGenerator.iconset-generator-plugin.main" options="-Xlint:none" />
       <module name="IconSetGenerator.iconset-generator-plugin.test" options="-Xlint:none" />
+      <module name="IconSetGenerator.main" options="-Xlint:none" />
+      <module name="IconSetGenerator.test" options="-Xlint:none" />
     </option>
   </component>
 </project>
