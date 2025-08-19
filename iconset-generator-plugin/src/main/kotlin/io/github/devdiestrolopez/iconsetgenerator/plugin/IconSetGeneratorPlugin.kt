@@ -7,7 +7,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 private const val DRAWABLE_DIRECTORY_PATH = "src/main/res/drawable"
 private const val DEFAULT_ICON_SET_FILE_NAME = "IconSet"
-private const val DEFAULT_ICON_SET_PACKAGE_NAME = ".ui"
 private const val GENERATED_DIRECTORY_PATH = "generated/source/main"
 
 internal class IconSetGeneratorPlugin : Plugin<Project> {
@@ -21,7 +20,7 @@ internal class IconSetGeneratorPlugin : Plugin<Project> {
             val mainSourceSet = androidExtension.sourceSets.getByName("main")
 
             iconSetExtension.apply {
-                outputPackage.convention(androidExtension.namespace!! + DEFAULT_ICON_SET_PACKAGE_NAME)
+                outputPackage.convention(androidExtension.namespace!!)
                 fileName.convention(DEFAULT_ICON_SET_FILE_NAME)
             }
 
