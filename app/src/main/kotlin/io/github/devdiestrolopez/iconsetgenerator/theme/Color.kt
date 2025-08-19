@@ -1,4 +1,4 @@
-package es.devdiestrolopez.iconsetgenerator.ui.theme
+package io.github.devdiestrolopez.iconsetgenerator.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package es.devdiestrolopez.iconsetgenerator.plugin
+package io.github.devdiestrolopez.iconsetgenerator.plugin
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
@@ -13,7 +13,7 @@ import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
-private const val PLUGIN_PACKAGE_NAME = "es.devdiestrolopez.iconset.generator.plugin"
+private const val PLUGIN_PACKAGE_NAME = "io.github.devdiestrolopez.iconset.generator.plugin"
 private const val ICON_PREFIX = "ic_"
 private const val XML_EXTENSION = "xml"
 

@@ -5,7 +5,7 @@ plugins {
     signing
 }
 
-group = "es.devdiestrolopez.iconset.generator"
+group = "io.github.devdiestrolopez.iconset.generator"
 version = "1.0.0"
 
 java {
@@ -20,12 +20,12 @@ kotlin {
 }
 
 gradlePlugin {
-    website.set("https://github.com/K4rLiToX/icon-set-generator")
-    vcsUrl.set("https://github.com/K4rLiToX/icon-set-generator")
+    website.set("https://github.com/devdiestrolopez/icon-set-generator")
+    vcsUrl.set("https://github.com/devdiestrolopez/icon-set-generator")
     plugins {
         register("IconSetGeneratorPlugin") {
-            id = "es.devdiestrolopez.iconset.generator"
-            implementationClass = "es.devdiestrolopez.iconsetgenerator.plugin.IconSetGeneratorPlugin"
+            id = "io.github.devdiestrolopez.iconset.generator"
+            implementationClass = "io.github.devdiestrolopez.iconsetgenerator.plugin.IconSetGeneratorPlugin"
             displayName = "IconSet Generator Plugin"
             description = "A Gradle plugin for Android that auto-generates a type-safe IconSet from your project's vector drawables."
             tags = listOf("android", "kotlin", "generation", "kotlin-dsl", "iconset")

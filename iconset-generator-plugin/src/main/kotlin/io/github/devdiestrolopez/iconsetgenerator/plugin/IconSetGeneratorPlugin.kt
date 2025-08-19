@@ -1,4 +1,4 @@
-package es.devdiestrolopez.iconsetgenerator.plugin
+package io.github.devdiestrolopez.iconsetgenerator.plugin
 
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "es.devdiestrolopez.iconsetgenerator"
+    namespace = "io.github.devdiestrolopez.iconsetgenerator"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "es.devdiestrolopez.iconsetgenerator"
+        applicationId = "io.github.devdiestrolopez.iconsetgenerator"
         minSdk = 28
         targetSdk = 36
         versionCode = 1

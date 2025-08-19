@@ -1,4 +1,4 @@
-package es.devdiestrolopez.iconsetgenerator.plugin
+package io.github.devdiestrolopez.iconsetgenerator.plugin
 
 import org.gradle.api.provider.Property
 
