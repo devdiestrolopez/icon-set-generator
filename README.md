@@ -11,30 +11,33 @@ The IconSetGenerator Gradle plugin streamlines the management of drawable resour
 - **Customizable:** Configure the output package name and class name to fit your project's needs.
 
 ## 🚀 Usage
-Using the plugin involves a two-step process to ensure a clean, centralized approach for managing the version across your project.
+Using the plugin involves a two-step process.
 
-First, add the plugin to your project-level `build.gradle.kts` file. Use apply false to prevent it from being applied globally.
+First, add the plugin to your project-level `build.gradle.kts` file.
 
 ```kotlin
+// build.gradle.kts (project level)
 plugins {
-  id("es.devdiestrolopez.iconset.generator") version "1.0.0" apply false
+  id("io.github.devdiestrolopez.iconset.generator") version "1.0.0" apply false
 }
 ```
 
 Next, apply the plugin in the `build.gradle.kts` file of the specific module where the icons resources reside and where the files will be generated.
 
 ```kotlin
+// build.gradle.kts (module level)
 plugins {
-  id("es.devdiestrolopez.iconset.generator")
+  id("io.github.devdiestrolopez.iconset.generator")
 }
 ```
 
 Finally, configure the plugin by creating an `iconSet` block. You can customize the package and file name for the generated code. If no configuration is needed, the `iconSet` block can be removed.
 
 ```kotlin
+// build.gradle.kts (module level)
 iconSet {
   // (Optional) The package where the generated class will be created.
-  // By default, this is set to `<your_module_package_name>.ui`
+  // By default, this is set to <your_module_package_name>
   outputPackage.set("com.example.app.ui.icons")
   
   // (Optional) The name of the generated Kotlin object.
@@ -43,6 +46,9 @@ iconSet {
 }
 ```
 
+> [!WARNING]
+> To function correctly, the plugin **must be used with either `icon-core-android` or `icon-compose-android` libraries**. You must add one of these as a dependency to your module's `build.gradle.kts` file. You can find detailed instructions and more information in the [Icon Project](https://github.com/devdiestrolopez/icon)
+
 ## ⚙️ How It Works
 - The IconSetGeneratorPlugin applies a task that reads all files in your `res/drawable` directory that match the `ic_*.xml` pattern.
 
@@ -50,19 +56,14 @@ iconSet {
 
 - The generated file is placed in the `build/generated/source/main` directory under the configured package.
 
-- The generated properties are of type `DrawableResource`, which holds the `@DrawableRes` integer ID for the icon. The `DrawableResource` class extends a sealed interface named `IconResource`.
-  ```kotlin
-  sealed interface IconResource
-  data class DrawableResource(@DrawableRes val id: Int) : IconResource
-  ```
-
-This generated file is automatically included in your module's source set, making the `IconSet` object available for use throughout your code.
+- The generated properties are of type `DrawableResource`, which holds the `@DrawableRes` integer ID for the icon. The `DrawableResource` class and the sealed interface `IconResource` that implements are both part of the `icon-core-android` library. This classes are part of the `icon-core-android` library.
 
 ## 📦 Generated Output
 After running a Gradle build, you will find a generated file similar to the one below in your build directory. You can then use the `IconSet` object directly in your Kotlin code.
 
 ```kotlin
-// Example generated file: build/generated/source/main/com/example/app/ui/icons/AppIcons.kt
+// Example generated file following the previous iconSet configuration:
+// build/generated/source/main/com/example/app/ui/icons/AppIcons.kt
 
 package com.example.app.ui.icons
 
@@ -75,8 +76,6 @@ object AppIcons {
 
 ## 👀 Future Scope & Usage
 Currently, the plugin's generation capabilities are limited to drawable resources (DrawableResource). Future development will expand this functionality to include support for vector images (ImageVectorResource), which are commonly used with libraries like Material Icons.
-
-It's important to note that this plugin is intended to be a foundational component. Its full value is realized when used in conjunction with a small, companion Jetpack Compose library that I will also be developing. This library will offer a unified Icon composable that can gracefully handle both DrawableResource and ImageVectorResource types, providing a seamless and consistent API for your UI code.
 
 ## 🤝 Contribution & Feedback
 We welcome contributions and feedback! If you find a bug or have an idea for a new feature, please open an issue or submit a pull request on the project's repository.
