@@ -13,7 +13,7 @@ import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
-private const val PLUGIN_PACKAGE_NAME = "io.github.devdiestrolopez.iconset.generator.plugin"
+private const val ICON_CORE_ANDROID_PACKAGE_NAME = "io.github.devdiestrolopez.icon.core.android"
 private const val ICON_PREFIX = "ic_"
 private const val XML_EXTENSION = "xml"
 
@@ -40,7 +40,7 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
             it.name.startsWith(ICON_PREFIX) && it.extension == XML_EXTENSION
         }
 
-        val drawableResourceClassName = ClassName(PLUGIN_PACKAGE_NAME, "DrawableResource")
+        val drawableResourceClassName = ClassName(ICON_CORE_ANDROID_PACKAGE_NAME, "DrawableResource")
 
         val propertySpecs = drawableFiles.map { file ->
             createPropertySpec(file, drawableResourceClassName)

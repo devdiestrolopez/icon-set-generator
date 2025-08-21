@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    // Uncomment to test the plugin
+    // id("io.github.devdiestrolopez.iconset.generator") version "1.0.0"
 }
 
 android {
@@ -37,6 +39,9 @@ android {
 }
 
 dependencies {
+
+    implementation("io.github.devdiestrolopez.icon.core:icon-core-android:1.0.0")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

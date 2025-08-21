@@ -27,7 +27,8 @@ gradlePlugin {
             id = "io.github.devdiestrolopez.iconset.generator"
             implementationClass = "io.github.devdiestrolopez.iconsetgenerator.plugin.IconSetGeneratorPlugin"
             displayName = "IconSet Generator Plugin"
-            description = "A Gradle plugin for Android that auto-generates a type-safe IconSet from your project's vector drawables."
+            description = "A Gradle plugin for Android that auto-generates a type-safe IconSet from your project's vector drawables. It leverages " +
+                    "the icon-core-android library for a unified and robust approach to resource handling."
             tags = listOf("android", "kotlin", "generation", "kotlin-dsl", "iconset")
         }
     }
