@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     kotlin("jvm") version "2.2.10"
+    id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "1.3.1"
     signing
 }
@@ -40,7 +41,6 @@ signing {
 }
 
 dependencies {
-    implementation(gradleApi())
     implementation("com.squareup:kotlinpoet:2.2.0")
     implementation("androidx.annotation:annotation:1.9.1")
     compileOnly("com.android.tools.build:gradle:8.12.0")
