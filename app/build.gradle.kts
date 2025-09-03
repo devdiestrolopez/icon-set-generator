@@ -36,6 +36,11 @@ android {
     buildFeatures {
         compose = true
     }
+    sourceSets {
+        getByName("main") {
+            this.kotlin.srcDir("src/icons/kotlin")
+        }
+    }
 }
 
 dependencies {
