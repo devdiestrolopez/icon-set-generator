@@ -1,5 +1,4 @@
-![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/io.github.devdiestrolopez.iconset.generator?strategy=latestProperty&style=for-the-badge&logo=gradle&logoColor=%23FFFFFF&label=iconset-generator&color=blue&link=https%3A%2F%2Fplugins.gradle.org%2Fplugin%2Fio.github.devdiestrolopez.iconset.generator)
-
+[![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/io.github.devdiestrolopez.iconset.generator?strategy=latestProperty&style=for-the-badge&logo=gradle&logoColor=%23FFFFFF&label=iconset-generator&color=blue)](https://plugins.gradle.org/plugin/io.github.devdiestrolopez.iconset.generator)
 
 [![Android Gradle Plugin](https://img.shields.io/badge/AGP-8.12.1-blue?style=for-the-badge)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-blue?style=for-the-badge&logo=kotlin&logoColor=orange)](https://kotlinlang.org/docs/whatsnew22.html)
