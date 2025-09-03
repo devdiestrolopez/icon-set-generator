@@ -19,16 +19,14 @@ The IconSetGenerator Gradle plugin streamlines the management of icon resources 
 ## 🚀 Usage
 Using the plugin involves a two-step process.
 
-First, add the plugin to your project-level `build.gradle.kts` file.
+### 1. Add the Dependencies
 
 ```kotlin
 // build.gradle.kts (project level)
 plugins {
-  id("io.github.devdiestrolopez.iconset.generator") version "1.1.0" apply false
+  id("io.github.devdiestrolopez.iconset.generator") version "<latest-version>" apply false
 }
 ```
-
-Next, apply the plugin in the `build.gradle.kts` file of the specific module where the icons resources reside and where the files will be generated.
 
 ```kotlin
 // build.gradle.kts (module level)
@@ -37,7 +35,8 @@ plugins {
 }
 ```
 
-Finally, configure the plugin by creating an `iconSet` block. You can customize the package and file name for the generated code. If no configuration is needed, the `iconSet` block can be removed.
+### 2. Configure the Plugin
+If no configuration is needed, the `iconSet` block can be removed.
 
 ```kotlin
 // build.gradle.kts (module level)
@@ -100,6 +99,17 @@ val Search = Icons.Outlined.Search
 
 > [!IMPORTANT]
 > For the plugin to work correctly, all imports must be full and without wildcards.
+
+## 💻 Compatibility
+The project is regularly tested with the following technology stack. For a complete list of dependencies and their versions, refer to the plugin's module `build.gradle.kts` file.
+
+| Technology | Version |
+| -------- | ------- |
+| Android Gradle Plugin (AGP) | 8.12.1 |
+| Kotlin | 2.2.10 |
+| minSdk | 28 |
+| targetSdk | 36 |
+| compileSdk | 36 |
 
 ## ⚙️ How It Works
 - The IconSetGeneratorPlugin applies a task that identifies your icons in two ways:
