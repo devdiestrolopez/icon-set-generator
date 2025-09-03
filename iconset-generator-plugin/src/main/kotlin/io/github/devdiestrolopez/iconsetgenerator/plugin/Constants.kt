@@ -2,6 +2,9 @@ package io.github.devdiestrolopez.iconsetgenerator.plugin
 
 import com.squareup.kotlinpoet.ClassName
 
+/**
+ * Constants related to the project.
+ */
 internal object ProjectConstants {
     private const val ICONS_SOURCE_DIRECTORY_PATH = "src/icons/kotlin"
     private const val MATERIAL_ICONS_FILE = "MaterialIcons.kt"
@@ -13,12 +16,18 @@ internal object ProjectConstants {
     const val MATERIAL_ICONS_FILE_PATH = "$ICONS_SOURCE_DIRECTORY_PATH/$MATERIAL_ICONS_FILE"
 }
 
+/**
+ * Holds the ClassNames of the classes that are used in the generated code.
+ */
 internal object ClassNames {
     private const val ICON_CORE_ANDROID_PACKAGE = "io.github.devdiestrolopez.icon.core.android"
     val DrawableResource = ClassName(ICON_CORE_ANDROID_PACKAGE, "DrawableResource")
     val ImageVectorResource = ClassName(ICON_CORE_ANDROID_PACKAGE, "ImageVectorResource")
 }
 
+/**
+ * A collection of regular expressions used for parsing the MaterialIcons.kt file.
+ */
 internal object RegexPatterns {
     val MaterialIconVariable = """
         ^val\s(\w+)\s=\s(.*)
