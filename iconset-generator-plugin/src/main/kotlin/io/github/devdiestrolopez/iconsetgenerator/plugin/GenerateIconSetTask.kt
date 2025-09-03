@@ -103,21 +103,23 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
         val lines = readLines().asSequence()
 
         val imports = lines
-            .filter { line -> line.matches(Constants.ImportRegex) }
-            .map { line ->
-                val groups = line.split(" ")
-                val packageSegments = groups[1].split(".")
-                val packageName = packageSegments.dropLast(1).joinToString(".")
-                val iconName = packageSegments.last()
+            .mapNotNull { line ->
+                val matchResult = Constants.MaterialIconImportRegex.find(line)
+                matchResult?.groupValues?.get(1)
+            }
+            .map { importPath ->
+                val segments = importPath.split(".")
+                val packageName = segments.dropLast(1).joinToString(".")
+                val iconName = segments.last()
                 MaterialIconImport(packageName, iconName)
             }.toList()
 
         val icons = lines
-            .filter { line -> line.matches(Constants.MaterialIconRegex) }
-            .map { line ->
-                val groups = line.split(" ")
-                val iconName = groups[1]
-                val reference = groups[3]
+            .mapNotNull { line ->
+                val matchResult = Constants.MaterialIconRegex.find(line)
+                matchResult?.destructured
+            }
+            .map { (iconName, reference) ->
                 IconEntry.MaterialEntry(iconName, reference)
             }.toList()
 

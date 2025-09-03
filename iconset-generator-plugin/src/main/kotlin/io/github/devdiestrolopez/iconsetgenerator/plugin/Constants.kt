@@ -7,7 +7,7 @@ internal object Constants {
     const val ICON_PREFIX = "ic_"
     const val XML_EXTENSION = "xml"
     val MaterialIconRegex = Regex("^val\\s(\\w+)\\s=\\s(.*)")
-    val ImportRegex = Regex("^import\\s(.*)")
+    val MaterialIconImportRegex = Regex("^import\\s(androidx\\.compose\\.material\\.icons.*)")
     val DrawableResourceClassName = ClassName(ICON_CORE_ANDROID_PACKAGE, "DrawableResource")
     val ImageVectorResourceClassName = ClassName(ICON_CORE_ANDROID_PACKAGE, "ImageVectorResource")
 }
