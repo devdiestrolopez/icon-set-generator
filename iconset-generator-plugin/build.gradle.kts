@@ -2,7 +2,7 @@ plugins {
     id("java-library")
     kotlin("jvm") version "2.2.10"
     id("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "1.3.1"
+    id("com.gradle.plugin-publish") version "2.0.0"
     signing
 }
 
