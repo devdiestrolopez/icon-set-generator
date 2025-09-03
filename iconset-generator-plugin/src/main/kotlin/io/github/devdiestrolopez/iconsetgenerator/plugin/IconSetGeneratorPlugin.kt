@@ -5,12 +5,6 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-private const val DRAWABLE_DIRECTORY_PATH = "src/main/res/drawable"
-private const val ICONS_SOURCE_DIRECTORY_PATH = "src/icons/kotlin"
-private const val DEFAULT_ICON_SET_FILE_NAME = "IconSet"
-private const val MATERIAL_ICONS_FILE = "MaterialIcons.kt"
-private const val GENERATED_DIRECTORY_PATH = "generated/source/main"
-
 internal class IconSetGeneratorPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
@@ -23,22 +17,22 @@ internal class IconSetGeneratorPlugin : Plugin<Project> {
 
             iconSetExtension.apply {
                 outputPackage.convention(androidExtension.namespace!!)
-                fileName.convention(DEFAULT_ICON_SET_FILE_NAME)
+                fileName.convention(ProjectConstants.DEFAULT_ICON_SET_FILE_NAME)
             }
 
-            val generatedSourceDir = project.layout.buildDirectory.dir(GENERATED_DIRECTORY_PATH)
+            val generatedSourceDir = project.layout.buildDirectory.dir(ProjectConstants.GENERATED_DIRECTORY_PATH)
             val projectDirectory = project.layout.projectDirectory
 
             iconSetGeneratorTask.configure { task ->
                 task.apply {
                     appPackageName.set(androidExtension.namespace!!)
-                    drawableDirectory.set(projectDirectory.dir(DRAWABLE_DIRECTORY_PATH))
+                    drawableDirectory.set(projectDirectory.dir(ProjectConstants.DRAWABLE_DIRECTORY_PATH))
                     outputDirectory.set(generatedSourceDir)
                     outputPackage.set(iconSetExtension.outputPackage.get())
                     fileName.set(iconSetExtension.fileName.get())
                     materialIconsSourceFile.set(
                         project.provider {
-                            val materialIconsFile = projectDirectory.file("$ICONS_SOURCE_DIRECTORY_PATH/$MATERIAL_ICONS_FILE")
+                            val materialIconsFile = projectDirectory.file(ProjectConstants.MATERIAL_ICONS_FILE_PATH)
                             if (materialIconsFile.asFile.exists()) {
                                 materialIconsFile
                             } else {

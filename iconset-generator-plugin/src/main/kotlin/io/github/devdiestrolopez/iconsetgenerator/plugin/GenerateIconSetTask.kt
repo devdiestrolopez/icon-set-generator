@@ -82,7 +82,7 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
 
     private fun createDrawableIcons(): List<IconEntry> {
         val drawableFiles = drawableDirectory.asFileTree.filter {
-            it.name.startsWith(Constants.ICON_PREFIX) && it.extension == Constants.XML_EXTENSION
+            it.name.startsWith(ProjectConstants.ICON_PREFIX) && it.extension == ProjectConstants.XML_EXTENSION
         }
         return if (drawableFiles.isEmpty) {
             logger.info("No drawable icons found in [${drawableDirectory.get().asFile.absolutePath}].")
@@ -90,7 +90,7 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
         } else {
             drawableFiles.map { file ->
                 val iconName = file.nameWithoutExtension
-                    .removePrefix(Constants.ICON_PREFIX)
+                    .removePrefix(ProjectConstants.ICON_PREFIX)
                     .split("_")
                     .joinToString("") { it.replaceFirstChar(Char::uppercase) }
                 val resource = "R.drawable.${file.nameWithoutExtension}"
@@ -104,7 +104,7 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
 
         val imports = lines
             .mapNotNull { line ->
-                val matchResult = Constants.MaterialIconImportRegex.find(line)
+                val matchResult = RegexPatterns.MaterialIconImport.find(line)
                 matchResult?.groupValues?.get(1)
             }
             .map { importPath ->
@@ -116,7 +116,7 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
 
         val icons = lines
             .mapNotNull { line ->
-                val matchResult = Constants.MaterialIconRegex.find(line)
+                val matchResult = RegexPatterns.MaterialIconVariable.find(line)
                 matchResult?.destructured
             }
             .map { (iconName, reference) ->
@@ -128,8 +128,8 @@ internal abstract class GenerateIconSetTask : DefaultTask() {
 
     private fun createPropertySpec(icon: IconEntry): PropertySpec {
         val type = when (icon) {
-            is IconEntry.ResourceEntry -> Constants.DrawableResourceClassName
-            is IconEntry.MaterialEntry -> Constants.ImageVectorResourceClassName
+            is IconEntry.ResourceEntry -> ClassNames.DrawableResource
+            is IconEntry.MaterialEntry -> ClassNames.ImageVectorResource
         }
         val reference = when (icon) {
             is IconEntry.ResourceEntry -> icon.resource
